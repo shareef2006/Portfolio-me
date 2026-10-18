@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="แฟ้มสะสมผลงานส่วนตัว (Personal Portfolio) แนะนำตัว ประวัติการศึกษา ผลงาน และทักษะส่วนตัว สามารถเข้าชมได้ตลอด 24 ชั่วโมง">
+  <meta name="author" content="Portfolio Owner">
+  <title id="page-title">Personal Portfolio | แฟ้มสะสมผลงาน</title>
+
+  <!-- Favicon Icon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💼</text></svg>">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Lucide Icons via CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- Background Ambient Glow & Lights -->
+  <div class="bg-ambient-layer" aria-hidden="true">
+    <div class="ambient-blob-1"></div>
+    <div class="ambient-blob-2"></div>
+    <div class="ambient-blob-3"></div>
+  </div>
+
+  <!-- Edit Mode Top Sticky Alert Banner -->
+  <div id="edit-mode-banner" class="edit-mode-banner" role="alert">
+    <span>🛠️ <strong>โหมดแก้ไขข้อมูลเปิดอยู่:</strong> คุณสามารถกดคลิกที่รูปภาพ หรือกดปุ่ม "จัดการข้อมูล" เพื่อปรับแต่งเนื้อหาได้ทันที</span>
+    <div style="display: flex; gap: 0.5rem;">
+      <button id="open-editor-from-banner-btn" class="btn btn-sm btn-primary">เปิดแผงควบคุม ⚙️</button>
+      <button id="exit-edit-mode-btn" class="btn btn-sm btn-secondary">ออกจากโหมดแก้ไข ✕</button>
+    </div>
+  </div>
+
+  <!-- Header & Navigation Bar -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#hero" class="brand-logo" aria-label="กลับสู่หน้าแรก">
+        <div class="brand-badge">⚡</div>
+        <span class="brand-text"><span id="nav-brand-name">Portfolio</span><span class="dot">.</span></span>
+      </a>
+
+      <!-- Desktop & Mobile Nav Menu -->
+      <nav aria-label="Main Navigation">
+        <ul id="nav-menu" class="nav-menu">
+          <li><a href="#hero" class="nav-link active">หน้าแรก</a></li>
+          <li><a href="#about" class="nav-link">แนะนำตัว</a></li>
+          <li><a href="#education" class="nav-link">ประวัติการศึกษา</a></li>
+          <li><a href="#skills" class="nav-link">ทักษะส่วนตัว</a></li>
+          <li><a href="#projects" class="nav-link">ผลงานที่เคยทำ</a></li>
+          <li><a href="#contact" class="nav-link">เส้นทางติดต่อ</a></li>
+        </ul>
+      </nav>
+
+      <!-- Action Buttons (Theme Toggle, CV Print, Edit Mode Toggle) -->
+      <div class="nav-actions">
+        <button id="theme-toggle-btn" class="btn-icon" title="สลับธีม สว่าง/มืด" aria-label="Toggle Theme">
+          <i data-lucide="moon" id="theme-icon"></i>
+        </button>
+        <button id="print-cv-btn" class="btn btn-secondary btn-sm" title="พิมพ์เป็น PDF หรือ CV" aria-label="Print Resume">
+          <i data-lucide="printer" style="width: 16px; height: 16px;"></i>
+          <span>พิมพ์ CV</span>
+        </button>
+        <button id="toggle-edit-mode-nav-btn" class="btn btn-outline btn-sm" title="เปิดโหมดแก้ไขข้อมูล">
+          <i data-lucide="edit-3" style="width: 16px; height: 16px;"></i>
+          <span id="nav-edit-label">แก้ไขข้อมูล</span>
+        </button>
+        <button id="mobile-nav-toggle" class="btn-icon mobile-nav-toggle" aria-label="Open Menu">
+          <i data-lucide="menu" id="mobile-menu-icon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+
+    <!-- 1. Hero Section -->
+    <section id="hero" class="hero-section">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <!-- Hero Text Content -->
+          <div class="hero-content">
+            <div class="hero-status-pill">
+              <span class="status-dot"></span>
+              <span id="hero-status-text">พร้อมรับงาน / Open to Opportunities</span>
+            </div>
+
+            <h1 class="hero-title">
+              <span id="hero-greeting-prefix">สวัสดีครับ, ผม</span><br>
+              <span class="name-highlight" id="hero-name">วรพล เจริญกิจพาณิชย์</span>
+            </h1>
+
+            <div class="hero-subtitle">
+              <i data-lucide="sparkles" style="color: var(--accent-secondary); width: 22px; height: 22px;"></i>
+              <span id="hero-title-text">Full-Stack Developer & UI/UX Designer</span>
+            </div>
+
+            <p class="hero-bio" id="hero-bio-text">
+              นักพัฒนาเว็บและผู้หลงใหลในเทคโนโลยี มีความมุ่งมั่นในการสร้างสรรค์ซอฟต์แวร์ที่ใช้งานง่าย สวยงาม และแก้ปัญหาได้จริง พร้อมเรียนรู้เทคโนโลยีใหม่ๆ อยู่เสมอ
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="#projects" class="btn btn-primary">
+                <i data-lucide="folder-git-2" style="width: 18px; height: 18px;"></i>
+                <span>ชมผลงานทั้งหมด</span>
+              </a>
+              <a href="#contact" class="btn btn-secondary">
+                <i data-lucide="mail" style="width: 18px; height: 18px;"></i>
+                <span>ติดต่อฉัน</span>
+              </a>
+              <button id="hero-edit-trigger-btn" class="btn btn-outline edit-chip-btn">
+                <i data-lucide="edit" style="width: 14px; height: 14px;"></i>
+                <span>แก้ไขโปรไฟล์</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Hero Profile Avatar Frame -->
+          <div class="hero-avatar-wrapper">
+            <div class="avatar-outer-glow">
+              <div class="avatar-inner-container" id="avatar-click-zone" title="คลิกเพื่อเปลี่ยนรูปภาพโปรไฟล์ของคุณ">
+                <img id="profile-avatar-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="รูปโปรไฟล์" class="avatar-img">
+                <div class="avatar-hover-overlay">
+                  <i data-lucide="camera" class="avatar-edit-icon"></i>
+                  <span>คลิกเพื่อเปลี่ยนรูปภาพ<br>(อัปโหลดจากเครื่องได้)</span>
+                </div>
+              </div>
+            </div>
+            <div class="avatar-badge-tag">
+              <i data-lucide="code-2" style="width: 16px; height: 16px; color: var(--accent-secondary);"></i>
+              <span id="avatar-badge-title">Tech Specialist</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Quick Stats Counters -->
+        <div class="hero-stats-grid">
+          <div class="stat-item">
+            <span class="stat-number" id="stat-experience">3+</span>
+            <span class="stat-label">ปีแห่งประสบการณ์</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="stat-projects">18+</span>
+            <span class="stat-label">โปรเจกต์ที่สำเร็จ</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="stat-skills">25+</span>
+            <span class="stat-label">ทักษะและความเชี่ยวชาญ</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="stat-satisfaction">100%</span>
+            <span class="stat-label">ความพึงพอใจของผู้ร่วมงาน</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 2. About Me Section (แนะนำตัว) -->
+    <section id="about" class="about-section">
+      <div class="container">
+        
+        <div class="section-header">
+          <span class="section-tag"><i data-lucide="user" style="width: 14px; height: 14px;"></i> เกี่ยวกับตัวฉัน</span>
+          <h2 class="section-title">หน้าแนะนำตัว <span class="gradient-text">(About Me)</span></h2>
+          <p class="section-subtitle">ข้อมูลส่วนตัว ความมุ่งมั่น และเป้าหมายในการพัฒนาตนเองอย่างต่อเนื่อง</p>
+        </div>
+
+        <div class="about-card-container">
+          
+          <!-- Main Narrative & Key Info Grid -->
+          <div class="about-main-card">
+            <h3 style="font-size: 1.4rem; margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between;">
+              <span>เรื่องราวและตัวตนของผม</span>
+              <button class="edit-chip-btn open-edit-modal-btn" data-tab="about">
+                <i data-lucide="edit-2" style="width: 12px; height: 12px;"></i> แก้ไข
+              </button>
+            </h3>
+
+            <p class="about-intro-text" id="about-intro-text">
+              ผมเป็นนักพัฒนาเว็บไซต์และซอฟต์แวร์ที่มีประสบการณ์ในการสร้างสรรค์เว็บแอปพลิเคชันที่ทันสมัย รวดเร็ว และตอบโจทย์ผู้ใช้งาน สนใจในการผสมผสานระหว่างการเขียนโค้ดที่มีประสิทธิภาพและการออกแบบ UI ที่สวยงามสะดุดตา
+            </p>
+
+            <div class="about-details-grid" id="about-details-container">
+              <!-- Rendered dynamically from data.js / LocalStorage -->
+            </div>
+          </div>
+
+          <!-- Highlights & Core Strengths Cards -->
+          <div class="about-highlights-grid" id="about-highlights-container">
+            <!-- Rendered dynamically -->
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. Education Section (ประวัติการศึกษา) -->
+    <section id="education" class="education-section">
+      <div class="container">
+        
+        <div class="section-header">
+          <span class="section-tag"><i data-lucide="graduation-cap" style="width: 14px; height: 14px;"></i> ประวัติการศึกษา</span>
+          <h2 class="section-title">การศึกษา & <span class="gradient-text">การเรียนรู้</span></h2>
+          <p class="section-subtitle">เส้นทางการศึกษา วุฒิบัตร และผลการเรียนที่ภาคภูมิใจ</p>
+          <div style="margin-top: 1rem;">
+            <button class="btn btn-outline btn-sm edit-chip-btn open-edit-modal-btn" data-tab="education">
+              <i data-lucide="plus-circle" style="width: 14px; height: 14px;"></i> เพิ่ม/แก้ไขประวัติการศึกษา
+            </button>
+          </div>
+        </div>
+
+        <div class="timeline-wrapper">
+          <div class="timeline-line"></div>
+          <div id="education-timeline-container">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. Skills Section (ทักษะส่วนตัว) -->
+    <section id="skills" class="skills-section">
+      <div class="container">
+        
+        <div class="section-header">
+          <span class="section-tag"><i data-lucide="cpu" style="width: 14px; height: 14px;"></i> ทักษะและความเชี่ยวชาญ</span>
+          <h2 class="section-title">ทักษะส่วนตัว <span class="gradient-text">(Skills & Tools)</span></h2>
+          <p class="section-subtitle">ความสามารถทางด้านเทคนิค เครื่องมือทำงาน และ Soft Skills สำหรับการทำงานอย่างมืออาชีพ</p>
+          <div style="margin-top: 1rem;">
+            <button class="btn btn-outline btn-sm edit-chip-btn open-edit-modal-btn" data-tab="skills">
+              <i data-lucide="plus-circle" style="width: 14px; height: 14px;"></i> เพิ่ม/แก้ไขทักษะ
+            </button>
+          </div>
+        </div>
+
+        <div class="skills-container-grid">
+          
+          <!-- Technical Skills with Progress Bars -->
+          <div class="skills-block">
+            <h3 class="skills-block-title">
+              <i data-lucide="code" class="icon-accent"></i>
+              <span>ทักษะด้านเทคนิค (Technical Skills)</span>
+            </h3>
+            <div class="tech-skills-list" id="tech-skills-container">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- Tools & Soft Skills -->
+          <div class="skills-block">
+            <h3 class="skills-block-title">
+              <i data-lucide="tool" class="icon-accent"></i>
+              <span>เครื่องมือที่ใช้งานประจำ (Tools & Tech)</span>
+            </h3>
+            <div class="tools-badge-grid" id="tools-badge-container">
+              <!-- Rendered dynamically -->
+            </div>
+
+            <h3 class="skills-block-title" style="margin-top: 2rem;">
+              <i data-lucide="heart-handshake" class="icon-accent"></i>
+              <span>ทักษะการทำงานร่วมกับผู้อื่น (Soft Skills)</span>
+            </h3>
+            <div class="soft-skills-list" id="soft-skills-container">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. Projects Section (ผลงานที่เคยทำ) -->
+    <section id="projects" class="projects-section">
+      <div class="container">
+        
+        <div class="section-header">
+          <span class="section-tag"><i data-lucide="layers" style="width: 14px; height: 14px;"></i> ผลงานที่ภาคภูมิใจ</span>
+          <h2 class="section-title">ผลงานที่เคยทำ <span class="gradient-text">(Featured Projects)</span></h2>
+          <p class="section-subtitle">ตัวอย่างโปรเจกต์ งานพัฒนาเว็บ แอปพลิเคชัน และงานออกแบบที่ผ่านมา</p>
+          <div style="margin-top: 1rem;">
+            <button class="btn btn-outline btn-sm edit-chip-btn open-edit-modal-btn" data-tab="projects">
+              <i data-lucide="plus-circle" style="width: 14px; height: 14px;"></i> เพิ่ม/แก้ไขผลงาน
+            </button>
+          </div>
+        </div>
+
+        <!-- Category Filter Pills -->
+        <div class="project-filter-bar">
+          <button class="filter-btn active" data-category="all">ทั้งหมด (All)</button>
+          <button class="filter-btn" data-category="web">Web Application</button>
+          <button class="filter-btn" data-category="mobile">Mobile App</button>
+          <button class="filter-btn" data-category="design">UI/UX Design</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid" id="projects-grid-container">
+          <!-- Rendered dynamically -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 6. Contact Section (เส้นทางติดต่อ) -->
+    <section id="contact" class="contact-section">
+      <div class="container">
+        
+        <div class="section-header">
+          <span class="section-tag"><i data-lucide="message-square" style="width: 14px; height: 14px;"></i> ติดต่อสอบถาม</span>
+          <h2 class="section-title">เส้นทางติดต่อ <span class="gradient-text">(Get In Touch)</span></h2>
+          <p class="section-subtitle">สนใจร่วมงาน สอบถามข้อมูล หรือปรึกษาโปรเจกต์ สามารถติดต่อผมได้ทุกช่องทางด้านล่าง</p>
+        </div>
+
+        <div class="contact-layout-grid">
+          
+          <!-- Direct Channels & Social Links -->
+          <div class="contact-info-cards">
+            
+            <!-- Email -->
+            <div class="contact-channel-card">
+              <div class="channel-icon">
+                <i data-lucide="mail"></i>
+              </div>
+              <div class="channel-content">
+                <span class="channel-label">อีเมล (Email)</span>
+                <a href="mailto:contact.woraphon@example.com" class="channel-value" id="contact-email-link">contact.woraphon@example.com</a>
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="contact-channel-card">
+              <div class="channel-icon">
+                <i data-lucide="phone"></i>
+              </div>
+              <div class="channel-content">
+                <span class="channel-label">เบอร์โทรศัพท์ (Phone)</span>
+                <a href="tel:0812345678" class="channel-value" id="contact-phone-link">081-234-5678</a>
+              </div>
+            </div>
+
+            <!-- Location -->
+            <div class="contact-channel-card">
+              <div class="channel-icon">
+                <i data-lucide="map-pin"></i>
+              </div>
+              <div class="channel-content">
+                <span class="channel-label">ที่อยู่ (Location)</span>
+                <span class="channel-value" id="contact-location-text">กรุงเทพมหานคร, ประเทศไทย</span>
+              </div>
+            </div>
+
+            <!-- Line ID with QR Button -->
+            <div class="contact-channel-card" style="cursor: pointer;" id="line-qr-trigger-card">
+              <div class="channel-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: rgba(16, 185, 129, 0.3);">
+                <i data-lucide="message-circle"></i>
+              </div>
+              <div class="channel-content" style="flex-grow: 1;">
+                <span class="channel-label">Line Official / Line ID</span>
+                <span class="channel-value" id="contact-line-text">@woraphon.dev</span>
+              </div>
+              <button class="btn btn-sm btn-outline" style="border-radius: var(--radius-full);">
+                <i data-lucide="qr-code" style="width: 14px; height: 14px;"></i> ดู QR Code
+              </button>
+            </div>
+
+            <!-- Social Media Row -->
+            <div style="margin-top: 1rem;">
+              <span style="font-size: 0.85rem; color: var(--text-faint); font-weight: 600; text-transform: uppercase;">ช่องทางโซเชียลมีเดีย:</span>
+              <div class="social-links-row" id="social-links-container">
+                <!-- Rendered dynamically -->
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Interactive Message Form -->
+          <div class="contact-form-card">
+            <h3>ส่งข้อความหาผม</h3>
+            <p>กรอกแบบฟอร์มด้านล่าง ข้อความจะถูกส่งตรงถึงอีเมลของผมทันทีครับ</p>
+
+            <form id="contact-form">
+              <div class="form-group-grid">
+                <div class="form-field">
+                  <label class="form-label" for="contact-input-name">ชื่อของคุณ *</label>
+                  <input type="text" id="contact-input-name" class="form-input" placeholder="เช่น คุณสมชาย หรือ บริษัท ABC" required>
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="contact-input-email">อีเมลของคุณ *</label>
+                  <input type="email" id="contact-input-email" class="form-input" placeholder="name@example.com" required>
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="contact-input-subject">หัวข้อเรื่อง *</label>
+                <input type="text" id="contact-input-subject" class="form-input" placeholder="เช่น สนใจจ้างงานพัฒนาเว็บไซต์ / สอบถามข้อมูล" required>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="contact-input-message">ข้อความรายละเอียด *</label>
+                <textarea id="contact-input-message" class="form-textarea" placeholder="พิมพ์รายละเอียดที่คุณต้องการคุยกับผมที่นี่..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">
+                <i data-lucide="send" style="width: 18px; height: 18px;"></i>
+                <span>ส่งข้อความทันที (Send Message)</span>
+              </button>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p class="footer-quote" id="footer-quote-text">
+        "เปลี่ยนความคิดสร้างสรรค์ให้กลายเป็นผลงานที่ใช้งานได้จริง ด้วยโค้ดที่มีคุณภาพ"
+      </p>
+      <div class="footer-meta">
+        <p>© <span id="current-year">2026</span> <strong id="footer-author-name">วรพล เจริญกิจพาณิชย์</strong>. All rights reserved.</p>
+        <p style="font-size: 0.8rem; color: var(--text-faint);">
+          เว็บ Portfolio พร้อมเปิดให้บริการสาธารณะตลอด 24 ชั่วโมง | พัฒนาด้วย Clean HTML5, Modern CSS & Vanilla JS
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       Floating Action Controls (Edit Mode & Back to Top)
+       ========================================================================== -->
+  <div class="floating-actions-bar">
+    <button id="floating-edit-btn" class="floating-btn floating-btn-edit" title="เปิด/ปิด โหมดแก้ไขข้อมูล">
+      <i data-lucide="edit-3" style="width: 16px; height: 16px;"></i>
+      <span>จัดการข้อมูล Portfolio</span>
+    </button>
+    <a href="#hero" class="floating-btn-top" title="เลื่อนขึ้นบนสุด" aria-label="Back to Top">
+      <i data-lucide="chevron-up" style="width: 20px; height: 20px;"></i>
+    </a>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- ==========================================================================
+       Native Modern Dialog 1: Change Profile Photo Modal
+       ========================================================================== -->
+  <dialog id="avatar-modal" class="modern-modal" closedby="any">
+    <div class="modal-header">
+      <h3>
+        <i data-lucide="camera" style="color: var(--accent-secondary);"></i>
+        <span>แก้ไขและเปลี่ยนรูปโปรไฟล์</span>
+      </h3>
+      <button class="modal-close-btn" data-close-modal="avatar-modal" aria-label="Close">✕</button>
+    </div>
+    
+    <div class="modal-body">
+      <div class="avatar-upload-zone" id="avatar-drop-zone">
+        <img id="avatar-modal-preview" src="" alt="ภาพตัวอย่าง" class="avatar-preview-circle">
+        <div>
+          <h4 style="font-size: 1.1rem; margin-bottom: 0.35rem;">ลากและวางรูปภาพที่นี่ หรือคลิกเพื่อเลือกไฟล์</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">รองรับไฟล์ภาพ JPG, PNG, WEBP, GIF (บันทึกลงในเบราว์เซอร์ทันที)</p>
+        </div>
+        <input type="file" id="avatar-file-input" accept="image/*" style="display: none;">
+        <button type="button" id="browse-avatar-file-btn" class="btn btn-secondary btn-sm">
+          <i data-lucide="upload" style="width: 14px; height: 14px;"></i> เลือกไฟล์จากเครื่องของคุณ
+        </button>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 0.5rem; margin-block: 1rem;">
+        <hr style="flex-grow: 1; border: none; border-top: 1px solid var(--border-subtle);">
+        <span style="font-size: 0.85rem; color: var(--text-faint);">หรือใส่ URL รูปภาพโดยตรง</span>
+        <hr style="flex-grow: 1; border: none; border-top: 1px solid var(--border-subtle);">
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="avatar-url-input">URL รูปภาพ:</label>
+        <div style="display: flex; gap: 0.5rem;">
+          <input type="url" id="avatar-url-input" class="form-input" placeholder="https://example.com/my-photo.jpg">
+          <button type="button" id="preview-avatar-url-btn" class="btn btn-secondary btn-sm">ทดสอบรูป</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" id="reset-default-avatar-btn" class="btn btn-secondary btn-sm">ใช้รูปภาพเริ่มต้น</button>
+      <button type="button" class="btn btn-secondary" data-close-modal="avatar-modal">ยกเลิก</button>
+      <button type="button" id="save-avatar-modal-btn" class="btn btn-primary">บันทึกรูปโปรไฟล์</button>
+    </div>
+  </dialog>
+
+  <!-- ==========================================================================
+       Native Modern Dialog 2: Full Portfolio Editor (Drawer / Modal)
+       ========================================================================== -->
+  <dialog id="portfolio-editor-modal" class="modern-modal" closedby="any">
+    <div class="modal-header">
+      <h3>
+        <i data-lucide="sliders" style="color: var(--accent-primary);"></i>
+        <span>ระบบจัดการข้อมูล Portfolio</span>
+      </h3>
+      <button class="modal-close-btn" data-close-modal="portfolio-editor-modal" aria-label="Close">✕</button>
+    </div>
+
+    <div class="modal-body">
+      <!-- Tabs Navigation -->
+      <div class="editor-tabs-nav">
+        <button class="tab-btn active" data-target="tab-profile">👤 โปรไฟล์ทั่วไป</button>
+        <button class="tab-btn" data-target="tab-about">📖 แนะนำตัว</button>
+        <button class="tab-btn" data-target="tab-education">🎓 ประวัติการศึกษา</button>
+        <button class="tab-btn" data-target="tab-skills">⚡ ทักษะความสามารถ</button>
+        <button class="tab-btn" data-target="tab-projects">💼 จัดการผลงาน</button>
+        <button class="tab-btn" data-target="tab-backup">💾 สำรองข้อมูล (JSON)</button>
+      </div>
+
+      <!-- Tab 1: Profile -->
+      <div id="tab-profile" class="tab-content-panel active">
+        <form id="form-edit-profile">
+          <div class="form-group-grid">
+            <div class="form-field">
+              <label class="form-label">ชื่อ - นามสกุล (ภาษาไทย):</label>
+              <input type="text" id="edit-name" class="form-input" required>
+            </div>
+            <div class="form-field">
+              <label class="form-label">ชื่อ - นามสกุล (English):</label>
+              <input type="text" id="edit-name-en" class="form-input">
+            </div>
+          </div>
+
+          <div class="form-group-grid">
+            <div class="form-field">
+              <label class="form-label">ตำแหน่ง / ความเชี่ยวชาญ (Title):</label>
+              <input type="text" id="edit-title" class="form-input" required>
+            </div>
+            <div class="form-field">
+              <label class="form-label">ข้อความสถานะ (Status Badge):</label>
+              <input type="text" id="edit-status" class="form-input">
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label">คำแนะนำตัวย่อ (Hero Bio):</label>
+            <textarea id="edit-bio" class="form-textarea" rows="3"></textarea>
+          </div>
+
+          <div class="form-group-grid">
+            <div class="form-field">
+              <label class="form-label">อีเมล (Email):</label>
+              <input type="email" id="edit-email" class="form-input">
+            </div>
+            <div class="form-field">
+              <label class="form-label">เบอร์โทรศัพท์ (Phone):</label>
+              <input type="text" id="edit-phone" class="form-input">
+            </div>
+          </div>
+
+          <div class="form-group-grid">
+            <div class="form-field">
+              <label class="form-label">ที่อยู่ (Location):</label>
+              <input type="text" id="edit-location" class="form-input">
+            </div>
+            <div class="form-field">
+              <label class="form-label">Line ID:</label>
+              <input type="text" id="edit-line" class="form-input">
+            </div>
+          </div>
+
+          <div class="form-group-grid">
+            <div class="form-field">
+              <label class="form-label">GitHub URL:</label>
+              <input type="url" id="edit-github" class="form-input">
+            </div>
+            <div class="form-field">
+              <label class="form-label">LinkedIn URL:</label>
+              <input type="url" id="edit-linkedin" class="form-input">
+            </div>
+          </div>
+
+          <div class="form-group-grid">
+            <div class="form-field">
+              <label class="form-label">Facebook URL:</label>
+              <input type="url" id="edit-facebook" class="form-input">
+            </div>
+            <div class="form-field">
+              <label class="form-label">Instagram URL:</label>
+              <input type="url" id="edit-instagram" class="form-input">
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label">คติประจำใจ / คำคมส่วนตัว (Quote):</label>
+            <input type="text" id="edit-quote" class="form-input">
+          </div>
+        </form>
+      </div>
+
+      <!-- Tab 2: About Me -->
+      <div id="tab-about" class="tab-content-panel">
+        <div class="form-field">
+          <label class="form-label">คำแนะนำตัวแบบละเอียด (About Narrative):</label>
+          <textarea id="edit-about-intro" class="form-textarea" rows="4"></textarea>
+        </div>
+        <div style="margin-top: 1.5rem;">
+          <h4 style="margin-bottom: 0.8rem; font-size: 1.05rem;">ข้อมูลส่วนตัวย่อย (Personal Details):</h4>
+          <div id="editor-about-details-list" style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 3: Education -->
+      <div id="tab-education" class="tab-content-panel">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+          <h4 style="font-size: 1.1rem;">รายการประวัติการศึกษา</h4>
+          <button type="button" id="add-education-btn" class="btn btn-sm btn-primary">
+            <i data-lucide="plus" style="width: 14px; height: 14px;"></i> เพิ่มประวัติใหม่
+          </button>
+        </div>
+        <div id="editor-education-list" style="display: flex; flex-direction: column; gap: 1rem;">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- Tab 4: Skills -->
+      <div id="tab-skills" class="tab-content-panel">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <h4 style="font-size: 1.05rem;">1. ทักษะทางเทคนิค (Technical Skills - ระดับ 0-100%)</h4>
+          <button type="button" id="add-tech-skill-btn" class="btn btn-sm btn-primary">
+            <i data-lucide="plus" style="width: 14px; height: 14px;"></i> เพิ่มทักษะ
+          </button>
+        </div>
+        <div id="editor-tech-skills-list" style="display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2rem;">
+          <!-- Rendered by JS -->
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <h4 style="font-size: 1.05rem;">2. เครื่องมือที่ใช้งาน (Tools & Tech Badges)</h4>
+          <button type="button" id="add-tool-badge-btn" class="btn btn-sm btn-primary">
+            <i data-lucide="plus" style="width: 14px; height: 14px;"></i> เพิ่มเครื่องมือ
+          </button>
+        </div>
+        <div id="editor-tools-list" style="display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2rem;">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- Tab 5: Projects -->
+      <div id="tab-projects" class="tab-content-panel">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+          <h4 style="font-size: 1.1rem;">รายการผลงานทั้งหมด</h4>
+          <button type="button" id="add-project-btn" class="btn btn-sm btn-primary">
+            <i data-lucide="plus" style="width: 14px; height: 14px;"></i> เพิ่มผลงานใหม่
+          </button>
+        </div>
+        <div id="editor-projects-list" style="display: flex; flex-direction: column; gap: 1rem;">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- Tab 6: Backup & Restore -->
+      <div id="tab-backup" class="tab-content-panel">
+        <div style="background: rgba(255, 255, 255, 0.04); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); margin-bottom: 1.5rem;">
+          <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem;">📥 ส่งออกข้อมูล (Export Portfolio JSON)</h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">
+            ดาวน์โหลดไฟล์ข้อมูลสำรองเก็บไว้ในเครื่องคอมพิวเตอร์ของคุณ เพื่อนำไปเปิดหรือใช้บนเครื่องอื่นได้ตลอดเวลา
+          </p>
+          <button type="button" id="export-json-btn" class="btn btn-secondary">
+            <i data-lucide="download" style="width: 16px; height: 16px;"></i> ส่งออกเป็นไฟล์ JSON
+          </button>
+        </div>
+
+        <div style="background: rgba(255, 255, 255, 0.04); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); margin-bottom: 1.5rem;">
+          <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem;">📤 นำเข้าข้อมูล (Import Portfolio JSON)</h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">
+            เลือกไฟล์ JSON ที่เคยดาวน์โหลดไว้เพื่อนำข้อมูลกลับมาแสดงบนเว็บไซต์
+          </p>
+          <input type="file" id="import-json-input" accept=".json" style="display: none;">
+          <button type="button" id="import-json-btn" class="btn btn-secondary">
+            <i data-lucide="upload" style="width: 16px; height: 16px;"></i> เลือกไฟล์ JSON เพื่อนำเข้า
+          </button>
+        </div>
+
+        <div style="background: rgba(244, 63, 94, 0.05); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid rgba(244, 63, 94, 0.2);">
+          <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--accent-warm);">🔄 ล้างข้อมูลและรีเซ็ต (Reset Default)</h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">
+            ต้องการล้างข้อมูลที่แก้ไขแล้วและคืนค่าเป็นข้อมูลตัวอย่างเริ่มต้น
+          </p>
+          <button type="button" id="reset-all-data-btn" class="btn btn-outline" style="border-color: var(--accent-warm); color: var(--accent-warm);">
+            รีเซ็ตข้อมูลเป็นค่าเริ่มต้นทั้งหมด
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-close-modal="portfolio-editor-modal">ปิด</button>
+      <button type="button" id="save-all-changes-btn" class="btn btn-primary">
+        <i data-lucide="save" style="width: 16px; height: 16px;"></i> บันทึกข้อมูลทั้งหมด
+      </button>
+    </div>
+  </dialog>
+
+  <!-- ==========================================================================
+       Native Modern Dialog 3: Project Detail Modal
+       ========================================================================== -->
+  <dialog id="project-detail-modal" class="modern-modal" closedby="any">
+    <div class="modal-header">
+      <h3 id="modal-project-title">รายละเอียดผลงาน</h3>
+      <button class="modal-close-btn" data-close-modal="project-detail-modal" aria-label="Close">✕</button>
+    </div>
+    
+    <div class="modal-body">
+      <div style="border-radius: var(--radius-md); overflow: hidden; margin-bottom: 1.5rem; max-height: 380px;">
+        <img id="modal-project-img" src="" alt="ภาพผลงาน" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+        <span class="project-category-badge" id="modal-project-category" style="position: static;">Category</span>
+      </div>
+      <p id="modal-project-desc" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-main); margin-bottom: 1.25rem;"></p>
+      
+      <div style="margin-bottom: 1.5rem;">
+        <h4 style="font-size: 0.95rem; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.5rem; letter-spacing: 0.05em;">เทคโนโลยีที่ใช้ (Tech Stack):</h4>
+        <div id="modal-project-tags" class="project-tags"></div>
+      </div>
+
+      <div style="background: rgba(255, 255, 255, 0.03); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); margin-bottom: 1rem;">
+        <h4 style="font-size: 0.95rem; margin-bottom: 0.4rem; color: var(--accent-secondary);">รายละเอียดเชิงลึก:</h4>
+        <p id="modal-project-details" style="font-size: 0.925rem; color: var(--text-muted); line-height: 1.6;"></p>
+      </div>
+    </div>
+
+    <div class="modal-footer" style="justify-content: space-between;">
+      <div style="display: flex; gap: 0.6rem;">
+        <a id="modal-project-live-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+          <i data-lucide="external-link" style="width: 14px; height: 14px;"></i> ดูตัวอย่างจริง (Live Demo)
+        </a>
+        <a id="modal-project-github-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+          <i data-lucide="github" style="width: 14px; height: 14px;"></i> โค้ดบน GitHub
+        </a>
+      </div>
+      <button type="button" class="btn btn-secondary btn-sm" data-close-modal="project-detail-modal">ปิด</button>
+    </div>
+  </dialog>
+
+  <!-- ==========================================================================
+       Native Modern Dialog 4: Line QR Code Modal
+       ========================================================================== -->
+  <dialog id="line-qr-modal" class="modern-modal" style="max-width: 400px; text-align: center;" closedby="any">
+    <div class="modal-header">
+      <h3>
+        <i data-lucide="message-circle" style="color: #10b981;"></i>
+        <span>สแกนเพิ่มเพื่อนใน Line</span>
+      </h3>
+      <button class="modal-close-btn" data-close-modal="line-qr-modal" aria-label="Close">✕</button>
+    </div>
+    
+    <div class="modal-body" style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+      <div style="background: #ffffff; padding: 1rem; border-radius: var(--radius-md); box-shadow: var(--shadow-md);">
+        <img id="modal-line-qr-img" src="" alt="Line QR Code" style="width: 220px; height: 220px; display: block;">
+      </div>
+      <div>
+        <p style="font-weight: 700; font-size: 1.1rem; color: var(--text-main);" id="modal-line-id-text">@woraphon.dev</p>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">เปิดแอป Line และสแกน QR Code นี้เพื่อติดต่อสอบถามได้ทันที</p>
+      </div>
+    </div>
+
+    <div class="modal-footer" style="justify-content: center;">
+      <button type="button" class="btn btn-secondary" data-close-modal="line-qr-modal">ปิดหน้าต่าง</button>
+    </div>
+  </dialog>
+
+  <!-- Core Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
